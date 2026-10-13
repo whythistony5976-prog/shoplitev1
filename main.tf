@@ -25,11 +25,3 @@ variable "project_name" {
   default     = "shoplite"
 }
 
-resource "aws_s3_bucket" "shoplite_state" {
-  bucket = "${var.project_name}-terraform-state"
-
-  tags = {
-    Name        = "${var.project_name}-terraform-state"
-    Environment = "production"
-  }
-}
