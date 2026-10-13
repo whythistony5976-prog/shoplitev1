@@ -4,12 +4,16 @@
 terraform {
   required_version = ">= 1.5.0"
 
+<<<<<<< HEAD
   backend "s3" {
     bucket  = "shoplite-terraform-state0"
     key     = "shoplite/terraform.tfstate"
     region  = "us-east-1"
     encrypt = true
   }
+=======
+ 
+>>>>>>> cdd54b2 (FIrsir)
 
   required_providers {
     aws = {
@@ -35,6 +39,7 @@ variable "project_name" {
   default     = "shoplite"
 }
 
+<<<<<<< HEAD
 variable "vpc_cidr" {
   description = "CIDR block for the ShopLite VPC."
   type        = string
@@ -358,5 +363,19 @@ resource "aws_instance" "shoplite_private_instance" {
     Name = "${var.project_name}-private-instance"
     Type = "private"
   })
+=======
+resource "aws_s3_bucket" "shoplite_state" {
+  bucket = "${var.project_name}-terraform-state"
+
+  tags = {
+    Name        = "${var.project_name}-terraform-state"
+    Environment = "production"
+  }
+}
+
+resource "aws_s3_bucket_acl" "shoplite_state" {
+  bucket = aws_s3_bucket.shoplite_state.id
+  acl    = "private"
+>>>>>>> cdd54b2 (FIrsir)
 }
 
