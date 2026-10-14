@@ -303,7 +303,7 @@ resource "aws_security_group" "shoplite_private_k3s_sg" {
 # Public EC2 instance in the public subnet.
 resource "aws_instance" "shoplite_public_instance" {
   ami                         = data.aws_ami.ubuntu_22_04.id
-  key_name                    = "key"
+  key_name                    = "dam_class"
   instance_type               = var.instance_type
   subnet_id                   = aws_subnet.shoplite_public_subnet.id
   vpc_security_group_ids      = [aws_security_group.shoplite_bastion_sg.id]
